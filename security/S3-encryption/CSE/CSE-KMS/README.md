@@ -1,6 +1,6 @@
 This is the contents of folder CSE-KMS
 
-This is a demonstration of the classic Envelope Encryption
+This is a demonstration of the classic Envelope Encryption \
 The steps to carry out client side encryption (CSE) on an object using AWS KMS CMK and upload the object.
 
 Step 0 - Grant Privileges to Default User based on Least Privilege \
