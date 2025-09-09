@@ -6,8 +6,7 @@ The steps to carry out client side encryption (CSE) on an object using AWS KMS C
 Step 0 - Grant Privileges to Default User based on Least Privilege
 source assumerole.sh Role_CSEOperator
 
-Step 1 - Create the File to Encrypt
-
+Step 1 - Create the File to Encrypt \
 Create a file with text of your choice
 
 Step 2 – Generate A Data Key from CMK
