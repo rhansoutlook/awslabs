@@ -4,7 +4,7 @@ This is the contents of folder CSE-KMS
 The steps to carry out client side encryption (CSE) on an object using AWS KMS CMK and upload the object.
 
 Step 0 - Grant Privileges to Default User based on Least Privilege \
-source assumerole.sh Role_CSEOperator
+source <assumerole.sh> <Role_CSEOperator>
 
 Step 1 - Create the File to Encrypt \
 Create a file with text of your choice
