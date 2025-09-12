@@ -1,6 +1,6 @@
 This is the contents of folder CSE-OpenSSL
 
-The steps to carry out client side encryption (CSE) on an object and uploading the object are as follows
+The steps to carry out client side encryption (CSE) on an object using OpenSSL and upload the object.
 
 0. source assumerole.sh Role_CSEOperator
 1. Create a file with text of your choice

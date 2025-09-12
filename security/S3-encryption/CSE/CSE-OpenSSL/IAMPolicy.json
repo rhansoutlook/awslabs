@@ -1,0 +1,37 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowS3ObjectOperations",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:DeleteBucket",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:CreateBucket"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*"
+            ]
+        },
+        {
+            "Sid": "AllowS3ListAllMyBuckets",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "AllowOptionalKMSAccessForCSE",
+            "Effect": "Allow",
+            "Action": [
+                "kms:GenerateDataKey",
+                "kms:Encrypt",
+                "kms:Decrypt"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
