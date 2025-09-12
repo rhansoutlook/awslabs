@@ -25,7 +25,7 @@ Step 6 - Delete the plaintext key \
 rm `plaintextkey.bin`
 
 Step 7 – Upload the encrypted object to our bucket \
-aws s3api put-object --bucket `<bucket name>` --key `encryptedusimgkms.txt`  --body `encrypted.txt` --metadata encryptedkey=`"$cat ciphertextkey.b64)"`
+aws s3api put-object --bucket `<bucket name>` --key `encryptedusimgkms.txt`  --body `encrypted.txt` --metadata encryptedkey=`"$(cat ciphertextkey.b64)"`
 
 Step 8 – Delete the cipher text key \
 rm  `ciphertextkey.b64`
