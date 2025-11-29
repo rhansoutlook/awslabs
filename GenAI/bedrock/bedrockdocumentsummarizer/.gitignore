@@ -1,0 +1,12 @@
+# 1. Ignore the Build Artifacts (The heavy zip file)
+*.zip
+
+# 2. Ignore the Dependencies (The 'package' folder)
+package/
+
+# 3. Ignore Python Cache files (Junk created by running python)
+__pycache__/
+*.pyc
+
+# 4. Ignore Local Output (If you don't want test summaries in the repo)
+summaries/
