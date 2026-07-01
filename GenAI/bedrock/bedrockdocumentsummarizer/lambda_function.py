@@ -97,7 +97,6 @@ def process_single_file(file_name, bucket_name, source_folder, dest_folder, mode
     # 4. Upload Summary (Fixed naming bug here)
     base_name = os.path.splitext(file_name)[0]  # Remove extension (e.g. 'report')
     summary_key = f"{dest_folder}{base_name}.summary.txt" # Result: 'summaries/report.txt'
-    
     s3_client.put_object(
         Bucket=bucket_name,
         Key=summary_key,
