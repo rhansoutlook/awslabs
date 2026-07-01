@@ -17,7 +17,7 @@ logger = logging.getLogger()
 level = getattr(logging, log_level_str, logging.INFO)
 logger.setLevel(level)
 
-# --- Initialize Clients ---
+# --- Initialize AWS Clients ---
 s3_client = boto3.client('s3')
 bedrock_client = boto3.client('bedrock-runtime', region_name='us-east-1')
 
