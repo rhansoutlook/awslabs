@@ -1,41 +1,42 @@
 AWSTemplateFormatVersion: '2010-09-09'
+
 Transform: AWS::Serverless-2016-10-31
 
 Description: >
   Serverless Translator
 
-  Serverless application demonstrating Amazon Translate using
-  API Gateway, Lambda, and AWS SAM.
+  A serverless REST API for translating text using AWS services.
 
 Globals:
   Function:
-    Timeout: 3
+    Runtime: python3.12
+    Timeout: 10
+    MemorySize: 128
+    Architectures:
+      - x86_64
 
 Resources:
-  TranslateFunction:
+
+  TranslatorFunction:
     Type: AWS::Serverless::Function
+
     Properties:
       CodeUri: src/
       Handler: app.lambda_handler
-      Runtime: python3.12
-      Architectures:
-        - x86_64
+      
       Events:
-        Translate:
+        TranslateApi:
           Type: Api
           Properties:
             Path: /translate
-            Method: get
-
+            Method: post    
+            
 Outputs:
-  TranslateApi:
-    Description: "API Gateway endpoint URL for the Translate function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod/translate/"
 
-  TranslateFunction:
-    Description: "Translate Lambda Function ARN"
-    Value: !GetAtt TranslateFunction.Arn
+  ApiEndpoint:
+    Description: REST API endpoint
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod/translate"
 
-  TranslateFunctionIamRole:
-    Description: "Implicit IAM role created for the Translate function"
-    Value: !GetAtt TranslateFunctionRole.Arn
+  TranslatorFunctionArn:
+    Description: Translator Lambda ARN
+    Value: !GetAtt TranslatorFunction.Arn
