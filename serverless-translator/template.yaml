@@ -1,10 +1,7 @@
 AWSTemplateFormatVersion: '2010-09-09'
-
 Transform: AWS::Serverless-2016-10-31
-
 Description: >
   Serverless Translator
-
   A serverless REST API for translating text using AWS services.
 
 Globals:
@@ -16,34 +13,39 @@ Globals:
       - x86_64
 
 Resources:
+  TranslatorApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: ServerlessTranslatorApi
+      StageName: Prod
+      OpenApiVersion: '3.0' # Forces explicit API definition handling
 
   TranslatorFunction:
     Type: AWS::Serverless::Function
-
     Properties:
       CodeUri: src/
       Handler: app.lambda_handler
-    
+      
       Policies:
         - Statement:
             - Effect: Allow
               Action:
                 - translate:TranslateText
               Resource: "*"
-
+      
       Events:
         TranslateApi:
           Type: Api
           Properties:
+            RestApiId: !Ref TranslatorApi
             Path: /translate
-            Method: post    
-            
-Outputs:
+            Method: POST # Standardized to uppercase
 
+Outputs:
   ApiEndpoint:
     Description: REST API endpoint
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod/translate"
-
+    Value: !Sub "https://${TranslatorApi}.execute-api.${AWS::Region}.${AWS::URLSuffix}/Prod/translate"
+    
   TranslatorFunctionArn:
     Description: Translator Lambda ARN
     Value: !GetAtt TranslatorFunction.Arn
