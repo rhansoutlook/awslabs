@@ -23,7 +23,14 @@ Resources:
     Properties:
       CodeUri: src/
       Handler: app.lambda_handler
-      
+    
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - translate:TranslateText
+              Resource: "*"
+
       Events:
         TranslateApi:
           Type: Api
